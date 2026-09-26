@@ -7,3 +7,7 @@ dist/
 *.local
 .env
 .env.*
+
+# owner handoff material, never published
+*.zip
+handoff/

@@ -11,8 +11,11 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
-import { Route as SoftwareIndexRouteImport } from './routes/software.index'
-import { Route as SoftwareSlugRouteImport } from './routes/software.$slug'
+import { Route as CapabilitiesRouteImport } from './routes/capabilities'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as GovernmentRouteImport } from './routes/government'
+import { Route as NoticesRouteImport } from './routes/notices'
+import { Route as ResearchRouteImport } from './routes/research'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -24,49 +27,98 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SoftwareIndexRoute = SoftwareIndexRouteImport.update({
-  id: '/software/',
-  path: '/software/',
+const CapabilitiesRoute = CapabilitiesRouteImport.update({
+  id: '/capabilities',
+  path: '/capabilities',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SoftwareSlugRoute = SoftwareSlugRouteImport.update({
-  id: '/software/$slug',
-  path: '/software/$slug',
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GovernmentRoute = GovernmentRouteImport.update({
+  id: '/government',
+  path: '/government',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NoticesRoute = NoticesRouteImport.update({
+  id: '/notices',
+  path: '/notices',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResearchRoute = ResearchRouteImport.update({
+  id: '/research',
+  path: '/research',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/software/$slug': typeof SoftwareSlugRoute
-  '/software/': typeof SoftwareIndexRoute
+  '/capabilities': typeof CapabilitiesRoute
+  '/contact': typeof ContactRoute
+  '/government': typeof GovernmentRoute
+  '/notices': typeof NoticesRoute
+  '/research': typeof ResearchRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/software/$slug': typeof SoftwareSlugRoute
-  '/software': typeof SoftwareIndexRoute
+  '/capabilities': typeof CapabilitiesRoute
+  '/contact': typeof ContactRoute
+  '/government': typeof GovernmentRoute
+  '/notices': typeof NoticesRoute
+  '/research': typeof ResearchRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/software/$slug': typeof SoftwareSlugRoute
-  '/software/': typeof SoftwareIndexRoute
+  '/capabilities': typeof CapabilitiesRoute
+  '/contact': typeof ContactRoute
+  '/government': typeof GovernmentRoute
+  '/notices': typeof NoticesRoute
+  '/research': typeof ResearchRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/software/$slug' | '/software/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/capabilities'
+    | '/contact'
+    | '/government'
+    | '/notices'
+    | '/research'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/software/$slug' | '/software'
-  id: '__root__' | '/' | '/about' | '/software/$slug' | '/software/'
+  to:
+    | '/'
+    | '/about'
+    | '/capabilities'
+    | '/contact'
+    | '/government'
+    | '/notices'
+    | '/research'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/capabilities'
+    | '/contact'
+    | '/government'
+    | '/notices'
+    | '/research'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  SoftwareSlugRoute: typeof SoftwareSlugRoute
-  SoftwareIndexRoute: typeof SoftwareIndexRoute
+  CapabilitiesRoute: typeof CapabilitiesRoute
+  ContactRoute: typeof ContactRoute
+  GovernmentRoute: typeof GovernmentRoute
+  NoticesRoute: typeof NoticesRoute
+  ResearchRoute: typeof ResearchRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -85,18 +137,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/software/': {
-      id: '/software/'
-      path: '/software'
-      fullPath: '/software/'
-      preLoaderRoute: typeof SoftwareIndexRouteImport
+    '/capabilities': {
+      id: '/capabilities'
+      path: '/capabilities'
+      fullPath: '/capabilities'
+      preLoaderRoute: typeof CapabilitiesRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/software/$slug': {
-      id: '/software/$slug'
-      path: '/software/$slug'
-      fullPath: '/software/$slug'
-      preLoaderRoute: typeof SoftwareSlugRouteImport
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/government': {
+      id: '/government'
+      path: '/government'
+      fullPath: '/government'
+      preLoaderRoute: typeof GovernmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notices': {
+      id: '/notices'
+      path: '/notices'
+      fullPath: '/notices'
+      preLoaderRoute: typeof NoticesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/research': {
+      id: '/research'
+      path: '/research'
+      fullPath: '/research'
+      preLoaderRoute: typeof ResearchRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -105,8 +178,11 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  SoftwareSlugRoute: SoftwareSlugRoute,
-  SoftwareIndexRoute: SoftwareIndexRoute,
+  CapabilitiesRoute: CapabilitiesRoute,
+  ContactRoute: ContactRoute,
+  GovernmentRoute: GovernmentRoute,
+  NoticesRoute: NoticesRoute,
+  ResearchRoute: ResearchRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

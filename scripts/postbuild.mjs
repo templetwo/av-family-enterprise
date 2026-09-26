@@ -62,7 +62,7 @@ await writeFile(
 <style>html{color-scheme:dark}body{margin:0;min-height:100dvh;display:grid;place-items:center;background:#0d1015;color:#eee9df;font-family:system-ui,sans-serif;text-align:center;padding:2rem}a{color:#e3b87e}</style>
 </head><body><main><p style="font-family:ui-monospace,monospace;letter-spacing:.14em;color:#c9955a">404</p>
 <h1 style="font-family:Georgia,serif;font-weight:500">This page isn't here.</h1>
-<p><a href="${ORIGIN}/">Home</a> · <a href="${ORIGIN}/software">Software</a> · <a href="${ORIGIN}/about">About</a></p></main></body></html>
+<p><a href="${ORIGIN}/">Home</a> · <a href="${ORIGIN}/research">Research</a> · <a href="${ORIGIN}/contact">Contact</a></p></main></body></html>
 `,
 );
 console.log("postbuild · wrote sitemap.xml, .nojekyll, CNAME, 404.html");
