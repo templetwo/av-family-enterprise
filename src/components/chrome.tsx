@@ -17,7 +17,7 @@ function Brand({ onNavy = true }: { onNavy?: boolean }) {
 }
 
 const linkCls =
-  "border-b-2 border-transparent py-1 text-[14.5px] text-on-navy no-underline hover:text-white";
+  "whitespace-nowrap border-b-2 border-transparent py-1 text-[14.5px] text-on-navy no-underline hover:text-white";
 const activeCls = { className: "border-gold! text-white!" };
 
 export function SiteHeader() {
@@ -26,7 +26,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 bg-navy shadow-[0_1px_0_rgb(255_255_255/0.06)]">
       <div className="wrap flex min-h-[72px] items-center justify-between gap-6">
         <Brand />
-        <nav aria-label="Main" className="hidden items-center gap-6 min-[1160px]:flex">
+        <nav aria-label="Main" className="hidden items-center gap-5 min-[1160px]:flex">
           {nav.map((n) => (
             <Link key={n.to} to={n.to} className={linkCls} activeProps={activeCls} activeOptions={{ exact: true }}>
               {n.label}
@@ -81,6 +81,14 @@ export function SiteFooter() {
   const a = "text-on-navy-soft no-underline hover:text-white";
   return (
     <footer className="on-navy bg-navy-deep text-on-navy-soft">
+      <div className="border-b border-white/10">
+        <div className="wrap py-6">
+          <Link to="/oath" className="group flex flex-col gap-1 no-underline sm:flex-row sm:items-baseline sm:gap-4">
+            <span className="text-[17px] font-semibold text-white">“I will never leave a fallen comrade.”</span>
+            <span className="font-mono text-[11.5px] uppercase tracking-[0.12em] text-gold group-hover:text-white">The Oath →</span>
+          </Link>
+        </div>
+      </div>
       <div className="wrap grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1.3fr]">
         <div>
           <Brand />
