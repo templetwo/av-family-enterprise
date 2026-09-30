@@ -35,6 +35,7 @@ export const nav = [
   { to: "/research", label: "Research & Demonstrations" },
   { to: "/government", label: "Government & Partners" },
   { to: "/about", label: "About" },
+  { to: "/oath", label: "The Oath" },
 ] as const;
 
 export type Area = {

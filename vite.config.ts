@@ -17,7 +17,7 @@ export default defineConfig(() => ({
       prerender: {
         enabled: true,
         crawlLinks: true,
-        pages: ["/", "/capabilities", "/research", "/government", "/about", "/contact", "/notices"].map((path) => ({ path })),
+        pages: ["/", "/capabilities", "/research", "/government", "/about", "/oath", "/contact", "/notices"].map((path) => ({ path })),
       },
     }),
     viteReact(),

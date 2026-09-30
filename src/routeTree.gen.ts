@@ -15,6 +15,7 @@ import { Route as CapabilitiesRouteImport } from './routes/capabilities'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as GovernmentRouteImport } from './routes/government'
 import { Route as NoticesRouteImport } from './routes/notices'
+import { Route as OathRouteImport } from './routes/oath'
 import { Route as ResearchRouteImport } from './routes/research'
 
 const IndexRoute = IndexRouteImport.update({
@@ -47,6 +48,11 @@ const NoticesRoute = NoticesRouteImport.update({
   path: '/notices',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OathRoute = OathRouteImport.update({
+  id: '/oath',
+  path: '/oath',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ResearchRoute = ResearchRouteImport.update({
   id: '/research',
   path: '/research',
@@ -60,6 +66,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/government': typeof GovernmentRoute
   '/notices': typeof NoticesRoute
+  '/oath': typeof OathRoute
   '/research': typeof ResearchRoute
 }
 export interface FileRoutesByTo {
@@ -69,6 +76,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/government': typeof GovernmentRoute
   '/notices': typeof NoticesRoute
+  '/oath': typeof OathRoute
   '/research': typeof ResearchRoute
 }
 export interface FileRoutesById {
@@ -79,6 +87,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/government': typeof GovernmentRoute
   '/notices': typeof NoticesRoute
+  '/oath': typeof OathRoute
   '/research': typeof ResearchRoute
 }
 export interface FileRouteTypes {
@@ -90,6 +99,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/government'
     | '/notices'
+    | '/oath'
     | '/research'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -99,6 +109,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/government'
     | '/notices'
+    | '/oath'
     | '/research'
   id:
     | '__root__'
@@ -108,6 +119,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/government'
     | '/notices'
+    | '/oath'
     | '/research'
   fileRoutesById: FileRoutesById
 }
@@ -118,6 +130,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   GovernmentRoute: typeof GovernmentRoute
   NoticesRoute: typeof NoticesRoute
+  OathRoute: typeof OathRoute
   ResearchRoute: typeof ResearchRoute
 }
 
@@ -165,6 +178,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NoticesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/oath': {
+      id: '/oath'
+      path: '/oath'
+      fullPath: '/oath'
+      preLoaderRoute: typeof OathRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/research': {
       id: '/research'
       path: '/research'
@@ -182,6 +202,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   GovernmentRoute: GovernmentRoute,
   NoticesRoute: NoticesRoute,
+  OathRoute: OathRoute,
   ResearchRoute: ResearchRoute,
 }
 export const routeTree = rootRouteImport
