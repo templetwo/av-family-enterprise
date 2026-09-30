@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { areas, csLabel } from "@/data/content";
 import { Eyebrow, Figure, Steps, Ext } from "@/components/ui";
+import { UsFlag } from "@/components/us-flag";
 
 export const Route = createFileRoute("/")({ component: Home });
 
@@ -27,7 +28,10 @@ function Home() {
       <section className="on-navy bg-navy text-on-navy">
         <div className="wrap grid items-center gap-12 py-[clamp(56px,8vw,104px)] lg:grid-cols-[1.15fr_1fr]">
           <div>
-            <p className="eyebrow">AV Family Enterprise LLC · Veteran-owned · Pennsylvania</p>
+            <div className="flex items-center gap-3">
+              <UsFlag className="h-[26px] w-auto shrink-0 ring-1 ring-white/40" />
+              <p className="eyebrow">AV Family Enterprise LLC · Veteran-owned · Pennsylvania</p>
+            </div>
             <h1 className="h1 mt-5 text-white lg:text-[clamp(40px,4.1vw,58px)]">
               Applied intelligence.
               <br />
