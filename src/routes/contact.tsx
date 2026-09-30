@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHeader } from "@/components/ui";
 import { site } from "@/data/content";
 import { pageMeta } from "@/lib/seo";
@@ -20,7 +20,11 @@ const field =
 
 function InquiryForm({ action }: { action: string }) {
   return (
-    <form action={action} method="post" className="card grid gap-[18px]">
+    <form action={action} method="post" className="card relative grid gap-[18px]">
+      {/* Honeypot: hidden from people and screen readers; a filled value means a bot. */}
+      <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">
+        <label>Website<input type="text" name="website" tabIndex={-1} autoComplete="off" /></label>
+      </div>
       <label className="grid gap-1.5 text-[14.5px] font-medium">Name<input className={field} type="text" name="name" autoComplete="name" required /></label>
       <label className="grid gap-1.5 text-[14.5px] font-medium">Organization<input className={field} type="text" name="org" autoComplete="organization" /></label>
       <label className="grid gap-1.5 text-[14.5px] font-medium">Work email<input className={field} type="email" name="email" autoComplete="email" required /></label>
@@ -42,6 +46,10 @@ function InquiryForm({ action }: { action: string }) {
         information, credentials, personal records, or proprietary operational data through this form.
       </p>
       <button type="submit" className="btn btn-primary justify-self-start">Send inquiry</button>
+      <p className="text-[13.5px] text-ink-soft">
+        Your inquiry is sent through contact.templetwo.com to {site.email}. See the{" "}
+        <Link to="/notices" hash="privacy" className="tlink">privacy notice</Link>.
+      </p>
     </form>
   );
 }
@@ -82,7 +90,10 @@ function Contact() {
               <p className="mt-2 font-semibold">{site.legalName} · {site.location}</p>
             </div>
             <div className="card">
-              <p className="font-semibold">Verified business email added after the mailbox test</p>
+              <p className="mono text-ink-soft">Business email</p>
+              <p className="mt-2">
+                <a href={`mailto:${site.email}`} className="tlink">{site.email}</a>
+              </p>
               <p className="mt-2 text-[14.5px] text-ink-soft">
                 This form is an inquiry channel, not an approved intake system for controlled data.
               </p>

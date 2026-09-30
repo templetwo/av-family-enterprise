@@ -14,13 +14,14 @@ export const site = {
   founder: "Anthony J. Vasquez Sr.",
   github: "https://github.com/templetwo",
   orcid: "https://orcid.org/0009-0000-6440-1506",
+  email: "info@avfamilyenterprise.com",
   /**
-   * Inquiry form endpoint. GitHub Pages cannot receive a form post, and the
-   * business mailbox has not been tested yet, so this stays null until a
-   * working endpoint exists. While null the Contact page says so instead of
-   * showing a form that goes nowhere (launch checklist: no inactive buttons).
+   * Inquiry form endpoint: the avfe-contact Cloudflare Worker (contact-worker/),
+   * which forwards each inquiry to `email`. GitHub Pages cannot receive a form
+   * post itself. Set to null to fall back to the research site's inquiry form;
+   * never point it at an endpoint that has not delivered a test message.
    */
-  formEndpoint: null as string | null,
+  formEndpoint: "https://contact.templetwo.com/avfe" as string | null,
   /** "Request a capability statement" until an approved statement exists. */
   capabilityStatementUrl: null as string | null,
 };

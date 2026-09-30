@@ -1,0 +1,42 @@
+# AV Family Enterprise — contact-form Worker. Deploy steps: README.md in this folder.
+#
+# Separate from the Temple of Two Worker on purpose: the business and the research
+# site never share a failure. Both live on contact.templetwo.com: the Temple Worker
+# holds that hostname as a Custom Domain, and this Worker takes the /avfe path by a
+# route. Routes run before a Custom Domain (Cloudflare treats the Custom Domain
+# Worker as the origin), so /avfe* reaches this Worker and every other path still
+# reaches the Temple one. Neither Worker's code knows about the other.
+#
+# avfamilyenterprise.com itself is NOT on Cloudflare (DNS at Openprovider, mail at
+# Webador) and is never touched.
+
+name = "avfe-contact"
+main = "src/worker.js"
+compatibility_date = "2024-11-01"
+workers_dev = false   # no *.workers.dev hostname; the route below is the only way in
+
+routes = [
+  { pattern = "contact.templetwo.com/avfe*", zone_name = "templetwo.com" }
+]
+
+# Cloudflare-native sending, no third-party account and no API key. The binding can
+# reach this one address and nothing else. The address must be a VERIFIED destination
+# under Email Routing (templetwo.com) before a send will land; adding it there is what
+# sends the verification email, so that step waits for Anthony (README step 4).
+send_email = [
+  { name = "EMAIL", destination_address = "info@avfamilyenterprise.com" }
+]
+
+[vars]
+CONTACT_TO = "info@avfamilyenterprise.com"
+# Sender must be on a zone of this account with Email Routing enabled: templetwo.com.
+CONTACT_FROM = "AV Family Enterprise <avfe-contact@templetwo.com>"
+
+# Per-IP rate limit, 5 submissions per 10 minutes. REQUIRED: without this binding the
+# Worker answers every POST with 503 not_configured (it never runs unthrottled).
+# Create a namespace of its own (do not reuse the Temple Worker's) and paste its id:
+#   npx wrangler kv namespace create RL
+# `RL` must stay a KV namespace: the code calls RL.get()/RL.put().
+[[kv_namespaces]]
+binding = "RL"
+id = "REPLACE_WITH_NEW_KV_NAMESPACE_ID"
