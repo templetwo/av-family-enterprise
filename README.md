@@ -21,8 +21,9 @@ copy, and the claims-and-notices sheet. Copy is used verbatim.
   before each publication.
 - The Experion name is cropped out of every simulator screenshot; the non-affiliation
   notice is in the footer (`trademarkNotice` in `src/data/content.ts`).
-- `site.formEndpoint` and `site.capabilityStatementUrl` stay `null` until a working
-  form endpoint / an approved statement exist. While null, the Contact page routes
-  inquiries to the Temple of Two inquiry form and no dead button is shown.
+- `site.formEndpoint` points at the contact Worker in `contact-worker/` (its README has
+  the deploy and verification steps); set it to `null` to fall back to the Temple of Two
+  inquiry form. `site.capabilityStatementUrl` stays `null` until an approved statement
+  exists, and no dead button is shown for it.
 - The site loads nothing from third parties; keep it that way or update the privacy
   notice in `src/routes/notices.tsx` first.

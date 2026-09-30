@@ -32,10 +32,14 @@ function Notices() {
               IP address when you load a page; that is governed by GitHub’s own privacy statement, not collected by us.
             </p>
             <p>
-              This site has no inquiry form of its own yet. Links on the Contact page lead to a separate inquiry form on
-              the founder’s research site; what you submit there is used only to reply to your inquiry.
+              The inquiry form on the Contact page sends what you type (name, organization, email address, type of
+              inquiry, and summary) to contact.templetwo.com, a Cloudflare Worker operated by the founder. It checks the
+              message, forwards it by email to info@avfamilyenterprise.com, and keeps nothing except a count of
+              submissions from your IP address, which it deletes after ten minutes to limit spam. Cloudflare processes
+              the request under its own privacy policy, and the mailbox is hosted by Webador. What you submit is used
+              only to reply to your inquiry.
             </p>
-            <p>This notice was last updated on 26 September 2026 and will be revised before any form or analytics is added.</p>
+            <p>This notice was last updated on 30 September 2026 and will be revised before any analytics or other data collection is added.</p>
           </div>
         </section>
 
